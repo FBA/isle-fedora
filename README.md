@@ -21,3 +21,7 @@ Contains and Includes:
 ### Usage
 - This version of the Fedora Image works in conjunction with the optional component [isle-blazegraph](https://github.com/Islandora-Collaboration-Group/isle-blazegraph) image.
 * For general usage of this image and [ISLE](https://github.com/Islandora-Collaboration-Group/ISLE), please refer to [ISLE documentation](https://islandora-collaboration-group.github.io/ISLE/)
+
+## Notes
+
+* Patched for [CVE-2021-44228](https://logging.apache.org/log4j/2.x/security.html)
