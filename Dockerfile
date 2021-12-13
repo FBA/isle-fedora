@@ -111,6 +111,8 @@ RUN mkdir /tmp/fedoragsearch && \
     cp -v /tmp/fedoragsearch/dgi_gsearch_extensions/target/gsearch_extensions-0.1.*-jar-with-dependencies.jar $CATALINA_HOME/webapps/fedoragsearch/WEB-INF/lib && \
     rm $CATALINA_HOME/webapps/fedoragsearch/WEB-INF/lib/log4j-over-slf4j-1.5.10.jar && \
     ## Cleanup phase.
+    ## Remove maven build files
+    rm -rf /root/.m2 && \
     rm -rf /tmp/* /var/tmp/*
 
 ## Gsearch / Solr configuration
