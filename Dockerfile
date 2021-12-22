@@ -1,4 +1,4 @@
-FROM borndigital/isle-tomcat:1.5.14
+FROM islandoracollabgroup/isle-tomcat:1.5.14
 
 ## Dependencies
 RUN GEN_DEP_PACKS="mysql-client \
