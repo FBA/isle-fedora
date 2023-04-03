@@ -1,4 +1,4 @@
-FROM islandoracollabgroup/isle-tomcat:1.5.24
+FROM islandoracollabgroup/isle-tomcat:1.5.25
 
 ## Dependencies
 RUN GEN_DEP_PACKS="mysql-client \
@@ -66,6 +66,8 @@ ARG MAVEN_MAJOR
 ARG MAVEN_VERSION
 ARG ANT_VERSION
 
+COPY fetch.xml /tmp/
+
 RUN mkdir -p $ANT_HOME $MAVEN_HOME && \
     cd /tmp && \
     curl -O -L "https://www.apache.org/dyn/closer.cgi?action=download&filename=maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" && \
@@ -73,6 +75,7 @@ RUN mkdir -p $ANT_HOME $MAVEN_HOME && \
     curl -O -L "https://www.apache.org/dyn/closer.cgi?action=download&filename=ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz" && \
     tar xzf /tmp/apache-ant-$ANT_VERSION-bin.tar.gz -C $ANT_HOME --strip-components=1 && \
     cd $ANT_HOME && \
+    mv /tmp/fetch.xml $ANT_HOME/ && \
     ant -f fetch.xml -Ddest=system && \
     ## Cleanup phase.
     rm -rf /tmp/* /var/tmp/* $ANT_HOME/bin/*.bat 
